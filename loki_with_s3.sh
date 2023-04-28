@@ -31,17 +31,32 @@ ingester:
 schema_config:
   configs:
   - from: 2020-05-15
-    store: boltdb
-    object_store: filesystem
+    store: boltdb-shipper
+    object_store: s3
     schema: v11
     index:
-      prefix: index_
-      period: 168h
+      prefix: loki_index_
+      period: 24h
+    chunks:
+      prefix: loki_chunk
+      period: 24h
 storage_config:
-  boltdb:
-    directory: /tmp/loki/index
-  filesystem:
-    directory: /tmp/loki/chunks
+  boltdb_shipper:
+   active_index_directory: /tmp/loki/index
+   cache_location: /tmp/loki/index_cache
+   shared_store: s3
+   cache_ttl: 24h
+  aws:
+    s3: s3://ap-south-1/bluelightco-lokis
+    s3forcepathstyle: true
+    bucketnames: bluelightco-lokis
+    region: ap-south-1
+    insecure: false
+    sse_encryption: false
+compactor:
+  working_directory: /tmp/loki/compactor
+  shared_store: s3
+  compaction_interval: 5m
 limits_config:
   enforce_metric_name: false
   reject_old_samples: true
@@ -60,8 +75,8 @@ table_manager:
     inactive_write_throughput: 0
     provisioned_read_throughput: 0
     provisioned_write_throughput: 0
-  retention_deletes_enabled: false
-  retention_period: 0
+  retention_deletes_enabled: true
+  retention_period: 24h
 EOF
 
 

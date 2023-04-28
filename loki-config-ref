@@ -1,0 +1,19 @@
+https://github.com/grafana/loki/blob/main/cmd/loki/loki-local-config.yaml
+
+https://bahmni.atlassian.net/wiki/spaces/BAH/pages/3090251784/Monitoring+Grafana+Loki+-+Persistent+logs?focusedCommentId=3090808842
+
+https://raw.githubusercontent.com/grafana/loki/master/cmd/loki/loki-local-config.yaml
+
+https://www.bookstack.cn/read/loki/configuration-examples.md -> IMP
+
+https://github.com/grafana/loki/issues/7335
+
+https://grafana.com/docs/loki/latest/configuration/examples/
+
+https://trieu.pro/blog/configuring-grafana-loki-with-amazon-s3-in-eks/
+
+https://bluelight.co/blog/how-to-install-grafana-loki
+
+https://blog.srev.in/posts/grafana-loki-with-amazon-s3/
+
+https://trieu.pro/blog/configuring-grafana-loki-with-amazon-s3-in-eks/

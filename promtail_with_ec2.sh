@@ -70,7 +70,8 @@ Type=notify-reload
 User=promtail
 Group=adm
 WorkingDirectory=/opt/promtail
-ExecStart=/opt/promtail/promtail-linux-amd64 --config.file=/opt/promtail/config-promtail.yaml -config.expand-env=true
+Environment="HOSTNAME=%H"
+ExecStart=/opt/promtail/promtail-linux-amd64 --config.file=/opt/promtail/config-promtail.yaml external-labels=host=${HOSTNAME} -config.expand-env=true
 SuccessExitStatus=143
 Restart=always
 RestartSec=5
